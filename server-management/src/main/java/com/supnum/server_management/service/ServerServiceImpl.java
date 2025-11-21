@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ServerServiceImpl implements ServerService {
+public class ServerServiceImpl extends ServerService {
 
     private final ServerRepository serverRepository;
 
@@ -18,7 +18,6 @@ public class ServerServiceImpl implements ServerService {
         server.setStatus(false);
         return serverRepository.save(server);
     }
-    @Override
     public List<Server> listServers() {
         return serverRepository.findAll();
     }
@@ -30,21 +29,18 @@ public class ServerServiceImpl implements ServerService {
         server.setName(newName);
         return serverRepository.save(server);
     }
-    @Override
     public boolean getStatus(Long id) {
         return serverRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Server not found"))
                 .isStatus();
     }
 
-    @Override
     public Server startServer(Long id) {
         Server server = serverRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Server not found"));
         server.setStatus(true);
         return serverRepository.save(server);
     }
-    @Override
     public Server stopServer(Long id) {
         Server server = serverRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Server not found"));
@@ -52,7 +48,6 @@ public class ServerServiceImpl implements ServerService {
         return serverRepository.save(server);
     }
 
-    @Override
     public void deleteServer(Long id) {
         Server server = serverRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Server not found"));
@@ -62,5 +57,4 @@ public class ServerServiceImpl implements ServerService {
         serverRepository.delete(server);
     }
 
-}
 }
