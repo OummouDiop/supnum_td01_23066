@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://supnum.com/serveur"
+    xmlns:tns="http://supnum.com/serveur"
+    elementFormDefault="qualified">
+
+    <!-- Type Serveur -->
+    <xs:complexType name="Serveur">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="statut" type="xs:boolean"/>
+            <xs:element name="ip" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Requête GetServeur -->
+    <xs:element name="GetServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Réponse GetServeur -->
+    <xs:element name="GetServeurResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serveur" type="tns:Serveur"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête GetAllServeurs -->
+    <xs:element name="GetAllServeursRequest">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Réponse GetAllServeurs -->
+    <xs:element name="GetAllServeursResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serveur" type="tns:Serveur" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête CreateServeur -->
+    <xs:element name="CreateServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serveur" type="tns:Serveur"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Réponse CreateServeur -->
+    <xs:element name="CreateServeurResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serveur" type="tns:Serveur"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête UpdateServeur -->
+    <xs:element name="UpdateServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="nom" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête DemarrerServeur -->
+    <xs:element name="DemarrerServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête ArreterServeur -->
+    <xs:element name="ArreterServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête DeleteServeur -->
+    <xs:element name="DeleteServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Réponse générique pour les opérations -->
+    <xs:element name="OperationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+                <xs:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
