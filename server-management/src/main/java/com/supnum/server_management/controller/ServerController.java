@@ -31,7 +31,7 @@ public class ServerController {
     }
 
     // Renommer un serveur
-    @PatchMapping("/{id}/rename")
+    @PutMapping("/{id}/rename")
     public ResponseEntity<Server> renameServer(@PathVariable Long id, @RequestParam String name) {
         return ResponseEntity.ok(serverService.renameServer(id, name));
     }
